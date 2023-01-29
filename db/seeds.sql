@@ -26,4 +26,4 @@ VALUES
    ('Frank', 'Alfred', 3, 6),
    ('Black', 'Ryan', 4, 4),
    ('Aiden', 'Daniels', 5, 2),
-   ('Grace', 'Davies', 6, 1),
+   ('Grace', 'Davies', 6, 1);
