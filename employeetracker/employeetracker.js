@@ -76,4 +76,20 @@ const addNewEmployee = [
     }
 ]
 
+//const to select employee
+const selectEmployee = [
+    {
+        type: 'input',
+        name: 'empoyee_id',
+        message: 'Enter the id of the employee you would like to update!'
+    },
+]
+//const to update employee role
+const updateEmployeeRole = [
+    {
+        type: 'input',
+        name: 'role_id',
+        message: 'Enter the id of the new role you would like to update'
+    },
+]
 
