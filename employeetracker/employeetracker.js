@@ -27,3 +27,53 @@ const menuOptions = [
         ]
     }]
 
+const addNewDepartment = [
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Enter the name of the department!'
+        },  
+]
+
+const addNewRole = [
+    {
+        type: 'input',
+        name: 'title',
+        message: 'Enter the name of the new role!'    
+    },
+    {
+        type: 'input',
+        name: 'salary',
+        message: 'Enter the salary of the new role!'
+    },
+    {
+        type: 'input',
+        name: 'department_id',
+        message: 'Enter the department id of the new role!'
+    },
+]
+
+const addNewEmployee = [
+    {
+        type: 'input',
+        name: 'first_name',
+        message: 'Enter the first name of the new employee!'
+    },
+    {
+        type: 'input',
+        name: 'last_name',
+        message: 'Enter the last name of the new employee!'
+    },
+    {
+        type: 'input',
+        name: 'role_id',
+        message: 'Enter the role id of the new employee!'
+    },
+    {
+        type: 'input',
+        name: 'manager_id',
+        message: 'Enter the manager_id of the new employee!'
+    }
+]
+
+
