@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
     password: 'bootcamp',
     database: 'employee_db'
 });
-
+//const to create list of options after user prompt
 const menuOptions = [
     {
         type: 'list',
@@ -26,7 +26,7 @@ const menuOptions = [
             "Exit"
         ]
     }]
-
+//function to add new department
 const addNewDepartment = [
         {
             type: 'input',
@@ -34,7 +34,7 @@ const addNewDepartment = [
             message: 'Enter the name of the department!'
         },  
 ]
-
+//function to add new role
 const addNewRole = [
     {
         type: 'input',
@@ -52,7 +52,7 @@ const addNewRole = [
         message: 'Enter the department id of the new role!'
     },
 ]
-
+//function to add new employee
 const addNewEmployee = [
     {
         type: 'input',
@@ -92,4 +92,19 @@ const updateEmployeeRole = [
         message: 'Enter the id of the new role you would like to update'
     },
 ]
+//asynchronous function to get the response from database
+const newRole = async() => {
+     const output = await inquirer.prompt(addNewRole)
+     //query database
+     const sql = 'INSERT INTO role (title, salary, department_id) VALUES (?,?,?)';
+     //append parameters to ouput
+     const parameter = [output.title, output.salary, output.department];
+     
+     db.query(sql, parameter, function (err, results) {
+        console.log("");  //ouput array
+        console.table(output);
+     });
+
+     startMenuOptions();
+}
 
