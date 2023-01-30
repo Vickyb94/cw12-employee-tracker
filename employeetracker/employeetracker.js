@@ -2,13 +2,15 @@
 const inquirer = require('inquirer');
 const mysql = require('inquirer');
 
-var connection = mysql.createConnection({
+const db = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
     password: 'bootcamp',
     database: 'employee_db'
-});
+},
+console.log(`Connected to the employee_db database.`)
+);
 //const to create list of options after user prompt
 const menuOptions = [
     {
@@ -92,19 +94,47 @@ const updateEmployeeRole = [
         message: 'Enter the id of the new role you would like to update'
     },
 ]
-//asynchronous function to get the response from database
+//function to carry out asynchronous query to get the response from database
+const newDepartment = async() => {
+     const output = await inquirer.prompt(addNewDepartment)
+     //query database
+     const sql = `INSERT INTO department(name)
+        VALUES (?)`;
+     const params = [output.name];
+
+     db.query(sql, params, function (err, outputs) {
+        console.log("");  //output array
+        console.table(outputs);
+     });
+
+     listOptions();
+}
+
 const newRole = async() => {
      const output = await inquirer.prompt(addNewRole)
      //query database
-     const sql = 'INSERT INTO role (title, salary, department_id) VALUES (?,?,?)';
-     //append parameters to ouput
-     const parameter = [output.title, output.salary, output.department];
+     const sql = `INSERT INTO role (title, salary, department_id) 
+        VALUES (?,?,?)`;
+     //append parameters to output
+     const params = [output.title, output.salary, output.department];
      
-     db.query(sql, parameter, function (err, results) {
-        console.log("");  //ouput array
-        console.table(output);
+     db.query(sql, params, function (err, outputs) {
+        console.log("");  //output array
+        console.table(outputs);
      });
 
-     startMenuOptions();
+     listOptions();
 }
 
+const newEmployee = async() => {
+     const output = await inquirer.prompt(addNewEmployee)
+     const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
+        VALUES (?,?,?,?)`;
+        const params = [output.first_name, output.last_name, output.role_id, output.manager_id];
+        db.query(sql, params, function (err, outputs) {
+            console.log("");  //ouput array
+            console.table(outputs);
+         });
+    
+         listOptions();
+}
