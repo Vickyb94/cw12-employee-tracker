@@ -138,3 +138,27 @@ const newEmployee = async() => {
     
          listOptions();
 }
+
+//query select employee
+const selectedEmployee = async() => {
+    const output = await inquirer.prompt(selectEmployee);
+
+    db.query('SELECT role.id, role.title FROM role', function (err, outputs) {
+        console.log("");  
+        console.table(outputs);
+     });
+   updatedEmployeeRole(output.employee_id);   
+}
+
+const updatedEmployeeRole = async (employeeID) => {
+    const output = await inquirer.prompt(updateEmployeeRole)
+    const sql = `UPDATE employee SET role_id = ${output.role_id}
+    Where id = ${employeeID}`;
+
+    db.query(sql, function (err, outputs) {
+        console.log("");  
+        console.table(outputs);
+     });
+
+     listOptions();
+}
