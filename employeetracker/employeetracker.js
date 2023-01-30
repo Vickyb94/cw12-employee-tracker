@@ -9,3 +9,21 @@ var connection = mysql.createConnection({
     password: 'bootcamp',
     database: 'employee_db'
 });
+
+const menuOptions = [
+    {
+        type: 'list',
+        name: 'menuOptions',
+        message: 'Select from the following options!',
+        options: [
+            "View all departments",
+            "View all roles",
+            "View all employees",
+            "Add a department",
+            "Add a role",
+            "Add an employee",
+            "Update an employee role",
+            "Exit"
+        ]
+    }]
+
