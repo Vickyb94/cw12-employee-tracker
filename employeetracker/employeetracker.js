@@ -167,14 +167,18 @@ const listOptions = async() => {
     const output = await inquirer.prompt(menuOptions)
     .then (function(output) {
         switch (output.menuOptions) {
+            //querying all departments from database
         case "View all departments":
             db.query('SELECT * FROM department', function (err, results) {
             console.log("");  
             console.table(outputs); 
         });
         listOptions();
-        break;
-
+        break;  // stops the query
+        
+        case "Add a department":
+            newDepartment();
+            break; // stops the query
 
         }   
     })
