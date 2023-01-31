@@ -222,3 +222,12 @@ const listOptions = async() => {
         }   
     });
 }
+//function to run the app and list menu options
+const runApp = async() => {
+    console.log('Welcome!');
+    console.log('To continue, select from the following options.' );
+
+    listOptions();
+}
+//calling the function to start the app
+runApp();
