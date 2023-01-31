@@ -13,10 +13,11 @@ Node.js, Inquirer, Mysql2, schema.sql, seeds.sql
 ## Usage
 After installing the packages, the user runs employyetracker.js on the command line then follows the instruction. The user uses the arrow keys to select options and to initiate the menu options again after an output is received.
 
+Github Repository: https://github.com/Vickyb94/cw12-employee-tracker
+
 ![alt text](./images/Screenshot%202023-01-31%20121940.png)
 ![alt text](./images/Screenshot%202023-01-31%20121757.png)
 
-Github Repository: https://github.com/Vickyb94/cw12-employee-tracker
 
 ## Credits
 https://www.w3schools.com/sql/default.asp
