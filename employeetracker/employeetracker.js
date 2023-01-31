@@ -99,6 +99,7 @@ const updateEmployeeRole = [
 //function to carry out asynchronous query to get the response from database
 const newDepartment = async() => {
      const output = await inquirer.prompt(addNewDepartment)
+     
      //query database
      const sql = `INSERT INTO department(name)
         VALUES (?)`;
@@ -166,7 +167,7 @@ const updatedEmployeeRole = async (employeeID) => {
 }
 //using listOptions function as a switchboard to launch queries from the database
 const listOptions = async() => {
-    const output = await inquirer.prompt(menuOptions)
+    inquirer.prompt(menuOptions)
     .then (function(output) {
         switch (output.menuOptions) {
             //querying all departments from database
@@ -228,7 +229,6 @@ const listOptions = async() => {
 const runApp = async() => {
     console.log('Welcome!');
     console.log('To continue, select from the following options.' );
-
     listOptions();
 }
 //calling the function to start the app
