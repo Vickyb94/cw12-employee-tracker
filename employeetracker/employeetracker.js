@@ -162,3 +162,20 @@ const updatedEmployeeRole = async (employeeID) => {
 
      listOptions();
 }
+//using listOptions function as a switchboard to launch queries from the database
+const listOptions = async() => {
+    const output = await inquirer.prompt(menuOptions)
+    .then (function(output) {
+        switch (output.menuOptions) {
+        case "View all departments":
+            db.query('SELECT * FROM department', function (err, results) {
+            console.log("");  
+            console.table(outputs); 
+        });
+        listOptions();
+        break;
+
+
+        }   
+    })
+}
