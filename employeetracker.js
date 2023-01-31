@@ -112,7 +112,7 @@ const newDepartment = async() => {
 
      listOptions();
 }
-
+//query new role
 const newRole = async() => {
      const output = await inquirer.prompt(addNewRole)
      //query database
@@ -128,7 +128,7 @@ const newRole = async() => {
 
      listOptions();
 }
-
+//query new employee
 const newEmployee = async() => {
      const output = await inquirer.prompt(addNewEmployee)
      const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
@@ -152,7 +152,7 @@ const selectedEmployee = async() => {
      });
    updatedEmployeeRole(output.employee_id);   
 }
-
+//query updated employee
 const updatedEmployeeRole = async (employeeID) => {
     const output = await inquirer.prompt(updateEmployeeRole)
     const sql = `UPDATE employee SET role_id = ${output.role_id}
