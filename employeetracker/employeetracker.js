@@ -19,7 +19,7 @@ const menuOptions = [
         type: 'list',
         name: 'menuOptions',
         message: 'Select from the following options!',
-        options: [
+        choices: [
             "View all departments",
             "View all roles",
             "View all employees",
