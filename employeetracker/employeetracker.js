@@ -211,6 +211,14 @@ const listOptions = async() => {
             })
                 newEmployee();
                 break;
+
+        case "Update an employee role":
+            db.query('SELECT employee.id, employee.first_name, employee.last_name FROM employee', function (err, outputs) {
+                console.log("");
+                console.table(outputs);
+            })
+            selectedEmployee();
+            break;
         }   
-    })
+    });
 }
