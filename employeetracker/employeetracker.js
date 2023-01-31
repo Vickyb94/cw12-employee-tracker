@@ -169,7 +169,7 @@ const listOptions = async() => {
         switch (output.menuOptions) {
             //querying all departments from database
         case "View all departments":
-            db.query('SELECT * FROM department', function (err, results) {
+            db.query('SELECT * FROM department', function (err, outputs) {
             console.log("");  
             console.table(outputs); 
         });
@@ -180,6 +180,17 @@ const listOptions = async() => {
             newDepartment();
             break; // stops the query
 
+        case "View all roles":
+            db.query('SELECT role.id, role.title, role.salary, department.name AS department_name FROM role LEFT JOIN department ON role.department_id = department.id', function (err, outputs) {
+            console.log("");  
+            console.table(outputs);   
+            });
+            listOptions();
+            break;
+        
+            case "Add a role":
+                 newRole();
+                 break;
         }   
     })
 }
