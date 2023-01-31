@@ -191,6 +191,26 @@ const listOptions = async() => {
             case "Add a role":
                  newRole();
                  break;
+
+        case "View all employees":
+            db.query("SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id;", function (err, outputs) {
+                console.log("");
+                console.table(outputs);
+              });
+              listOptions();
+              break;
+        
+        case "Add an employee":
+            db.query('SELECT role.*, department.name AS department_name FROM role LEFT JOIN department ON role.department_id', function (err, outputs) {
+                console.log("");
+                console.table(outputs);
+            });
+            db.query('SELECT employee.*, role.title AS role_title FROM employee LEFT JOIN role ON employee.role_id = role.id', function (err,outputs) {
+                console.log("");
+                console.table(outputs);
+            })
+                newEmployee();
+                break;
         }   
     })
 }
